@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="app.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+</head>
+<body>
+    <div id="main-background">
+        <div id="login-card">
+            <div id="login-header">
+                <div id="login-brand">
+                    <span id="logo-icon" class="material-symbols-outlined">explosion</span>
+                    Claudia Logo
+                </div>
+                <div id="login-header">
+                    <p>
+                        This is not a real online service! You know you need something like this in your life to help you realize 
+                        your deepest dreams. Sign up now to get started. You know you want to.
+                    </p>
+                </div>
+            </div>
+            <div id="login-body">
+                <form id="signin-form" method="post">
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="name">Name *</label>
+                            <input type="text" name="name" id="name" required pattern="[a-zA-Z]+" placeholder="Name" maxlength="15">
+                        </div>
+                        <div class="input-group">
+                            <label for="lastname">Lastname *</label>
+                            <input type="text" name="lastname" id="lastname" required pattern="[a-zA-Z]+" placeholder="Lastname"  maxlength="10">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+
+                        <div class="input-group">
+                            <label for="email">Email *</label>
+                            <input type="email" name="email" id="email" required placeholder="account@email.com">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="phonenumber">Phone Number</label>
+                            <input type="tel" name="phonenumber" id="phonenumber" placeholder="xxxxxxxx">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="confirmpassword">Confirm Password</label>
+                            <input type="password" name="confirmpassword" id="confirmpassword">
+                        </div>
+                    </div>
+                    <span id="passwordError">Error</span>
+
+                    <div id="login-button">
+                        <button type="submit" onclick="passwordValidation">Create Account</button>
+                    </div>
+                </form>
+            </div>
+            <div id="login-footer">
+                Already have an account? Log In.
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    const form = document.getElementById("signin-form");
+    const password = form.password;
+    const confirmPassword = form.confirmpassword;
+    const feedback = document.getElementById("passwordError");
+    let isPasswordMatch = false;
+
+    confirmPassword.addEventListener("input", () => {
+    if (password.value != confirmPassword.value) {
+        feedback.innerHTML = "Password did not match.";
+        feedback.style.color = "red"
+        isPasswordMatch = false;
+    } else {
+        feedback.innerHTML = "";
+        isPasswordMatch = true;
+    }
+    });
+
+    form.onsubmit = function () {
+        if (isPasswordMatch) {
+            alert("Form submitted. Great!");
+            return true;
+        }
+        alert("Wait! Password did not match.");
+        return false;
+    };
+    
+    
+</script>
+
+</html>
